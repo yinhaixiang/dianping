@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * <p>
@@ -44,6 +45,14 @@ public class UserController {
         } else {
             return CommonRes.create(userModel);
         }
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index() {
+        String userName = "sean";
+        ModelAndView modelAndView = new ModelAndView("/index.html");
+        modelAndView.addObject("name", userName);
+        return modelAndView;
     }
 }
 
