@@ -1,6 +1,9 @@
 package com.sean.dianping.controller;
 
 import com.sean.dianping.bean.User;
+import com.sean.dianping.common.BusinessException;
+import com.sean.dianping.common.CommonRes;
+import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,8 +37,13 @@ public class UserController {
 
     @RequestMapping("/get")
     @ResponseBody
-    public User getUser(@RequestParam(name = "id") Integer id) {
-        return userService.getById(id);
+    public CommonRes getUser(@RequestParam(name = "id") Integer id) throws BusinessException {
+        User userModel = userService.getById(id);
+        if (userModel == null) {
+            throw new BusinessException(EmBusinessError.NO_OBJECT_FOUND);
+        } else {
+            return CommonRes.create(userModel);
+        }
     }
 }
 
