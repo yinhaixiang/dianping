@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 /**
  * 代码生成器
+ * @author yinhaixiang
  */
 public class MybatisPlusGenerator {
     public static void main(String[] args) throws InterruptedException {
@@ -71,22 +72,6 @@ public class MybatisPlusGenerator {
             }
         };
 
-//        // 如果模板引擎是 freemarker
-//        String templatePath = "/templates/mapper.xml.ftl";
-
-        // 自定义输出配置
-        List<FileOutConfig> focList = new ArrayList<>();
-
-//        // 自定义配置会被优先输出
-//        focList.add(new FileOutConfig(templatePath) {
-//            @Override
-//            public String outputFile(com.baomidou.mybatisplus.generator.config.po.TableInfo tableInfo) {
-//                // 自定义输入文件名称
-//                return rb.getString("OutputDirXml") + "/mapper/" + tableInfo.getEntityName() + StringPool.DOT_XML;
-//            }
-//        });
-
-        cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
         mpg.setTemplate(new TemplateConfig().setXml(null));
 
@@ -99,7 +84,6 @@ public class MybatisPlusGenerator {
         strategy.setInclude(new String[]{rb.getString("tableName")});
 
         mpg.setStrategy(strategy);
-//        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
 
         System.out.println("done,fresh engineering");
