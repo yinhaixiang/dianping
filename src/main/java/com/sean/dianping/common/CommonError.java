@@ -5,11 +5,15 @@ package com.sean.dianping.common;
  * @author yinhaixiang
  */
 public class CommonError {
-    //错误码
+    /**
+     * 错误码
+     */
     private Integer errCode;
 
 
-    //错误描述
+    /**
+     * 错误描述
+     */
     private String errMsg;
 
     public CommonError(Integer errCode, String errMsg) {

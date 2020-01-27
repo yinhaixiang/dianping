@@ -4,6 +4,17 @@ GET {{host}}/user/test
 ### 根据id获取用户信息
 GET {{host}}/user/get?id=2
 
+### 注册用户
+POST {{host}}/user/register
+Content-Type: application/json
+
+{
+  "telphone": 999,
+  "password": "content",
+  "nickName": "dfsadfa",
+  "gender": 1
+}
+
 ###
 
 

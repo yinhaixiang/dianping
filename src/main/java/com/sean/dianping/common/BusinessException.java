@@ -4,7 +4,7 @@ package com.sean.dianping.common;
 /**
  * @author yinhaixiang
  */
-public class BusinessException extends Exception {
+public class BusinessException extends RuntimeException {
     private CommonError commonError;
 
     public BusinessException(EmBusinessError emBusinessError) {
@@ -25,4 +25,5 @@ public class BusinessException extends Exception {
     public void setCommonError(CommonError commonError) {
         this.commonError = commonError;
     }
+
 }

@@ -1,7 +1,8 @@
 package com.sean.dianping.service;
 
-import com.sean.dianping.bean.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sean.dianping.bean.User;
+import com.sean.dianping.common.BusinessException;
 
 /**
  * <p>
@@ -13,4 +14,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
+    /**
+     * 注册用户
+     * @param registerUser
+     * @return
+     */
+    User register(User registerUser);
 }
