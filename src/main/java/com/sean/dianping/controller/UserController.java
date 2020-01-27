@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  * 前端控制器
@@ -25,6 +27,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     public static final String CURRENT_USER_SESSION = "currentUserSession";
+
+    @Autowired
+    private HttpServletRequest httpServletRequest;
 
     @Autowired
     private UserService userService;
@@ -54,5 +59,7 @@ public class UserController {
         modelAndView.addObject("name", userName);
         return modelAndView;
     }
+
+
 }
 

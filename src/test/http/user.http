@@ -1,0 +1,9 @@
+### test
+GET {{host}}/user/test
+
+### 根据id获取用户信息
+GET {{host}}/user/get?id=2
+
+###
+
+
