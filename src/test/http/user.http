@@ -9,12 +9,29 @@ POST {{host}}/user/register
 Content-Type: application/json
 
 {
-  "telphone": 999,
-  "password": "content",
-  "nickName": "dfsadfa",
+  "telphone": 123,
+  "password": "123",
+  "nickName": "sean",
   "gender": 1
 }
 
+### login
+POST {{host}}/user/login
+Content-Type: application/json
+
+{
+  "telphone": 123,
+  "password": "123"
+}
+
+### 获取当前用户信息
+GET {{host}}/user/getcurrentuser
+
+### 退出登录
+GET {{host}}/user/logout
+
 ###
+
+
 
 

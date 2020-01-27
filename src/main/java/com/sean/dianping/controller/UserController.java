@@ -90,24 +90,25 @@ public class UserController {
         }
     }
 
-//    @RequestMapping("/login")
-//    @ResponseBody
-//    public CommonRes login(@RequestBody @Valid LoginReq loginReq, BindingResult bindingResult) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
-//        if (bindingResult.hasErrors()) {
-//            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
-//        }
-//        User userModel = userService.login(loginReq.getTelphone(), loginReq.getPassword());
-//        httpServletRequest.getSession().setAttribute(CURRENT_USER_SESSION, userModel);
-//
-//        return CommonRes.create(userModel);
-//    }
-//
-//    @RequestMapping("/logout")
-//    @ResponseBody
-//    public CommonRes logout() throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
-//        httpServletRequest.getSession().invalidate();
-//        return CommonRes.create(null);
-//    }
+    @RequestMapping("/login")
+    @ResponseBody
+    public CommonRes login(@RequestBody @Valid LoginReq loginReq, BindingResult bindingResult) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+        if (bindingResult.hasErrors()) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
+        }
+        User userModel = userService.login(loginReq.getTelphone(), loginReq.getPassword());
+        httpServletRequest.getSession().setAttribute(CURRENT_USER_SESSION, userModel);
+
+        return CommonRes.create(userModel);
+    }
+
+    //
+    @RequestMapping("/logout")
+    @ResponseBody
+    public CommonRes logout() {
+        httpServletRequest.getSession().invalidate();
+        return CommonRes.create(null);
+    }
 
     @RequestMapping("/getcurrentuser")
     @ResponseBody

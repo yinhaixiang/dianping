@@ -35,6 +35,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return this.getById(registerUser.getId());
     }
 
+    @Override
+    public User login(String telphone, String password) {
+        User userModel = this.lambdaQuery().eq(User::getTelphone, telphone).eq(User::getPassword, encodeByMd5(password)).one();
+        if (userModel == null) {
+            throw new BusinessException(EmBusinessError.LOGIN_FAIL);
+        }
+        return userModel;
+    }
+
+    @Override
+    public Integer countAllUser() {
+        return this.count();
+    }
 
     private String encodeByMd5(String str) {
         try {
