@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author yinhaixiang
@@ -40,8 +42,16 @@ public class SellerController {
         int size = pageQuery.getSize();
         IPage<Seller> sellerModelPageInfo = sellerService.selectAll(current, size);
 
+        // 转成前端需要的数据格式
+        Map result = new HashMap();
+        result.put("list", sellerModelPageInfo.getRecords());
+        result.put("total", sellerModelPageInfo.getTotal());
+        result.put("pageSize", sellerModelPageInfo.getSize());
+        result.put("pageNum", sellerModelPageInfo.getCurrent());
+        result.put("pages", sellerModelPageInfo.getPages());
+
         ModelAndView modelAndView = new ModelAndView("/admin/seller/index.html");
-        modelAndView.addObject("data", sellerModelPageInfo);
+        modelAndView.addObject("data", result);
         modelAndView.addObject("CONTROLLER_NAME", "seller");
         modelAndView.addObject("ACTION_NAME", "index");
         return modelAndView;
