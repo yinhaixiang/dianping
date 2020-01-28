@@ -11,8 +11,6 @@ import javax.validation.constraints.NotNull;
  * @author yinhaixiang
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 public class RegisterReq {
     @NotBlank(message = "手机号不能为空")
     private String telphone;
