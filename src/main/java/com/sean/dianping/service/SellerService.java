@@ -16,10 +16,6 @@ import java.util.List;
  */
 public interface SellerService extends IService<Seller> {
 
-    Seller create(Seller sellerModel);
-
-    Seller get(Integer id);
-
     IPage<Seller> selectAll(int current, int size);
 
     Seller changeStatus(Integer id, Integer disabledFlag);

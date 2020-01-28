@@ -6,11 +6,14 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sean.dianping.bean.Seller;
+import com.sean.dianping.common.BusinessException;
+import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.SellerMapper;
 import com.sean.dianping.service.SellerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -25,16 +28,6 @@ import java.util.List;
 public class SellerServiceImpl extends ServiceImpl<SellerMapper, Seller> implements SellerService {
 
     @Override
-    public Seller create(Seller sellerModel) {
-        return null;
-    }
-
-    @Override
-    public Seller get(Integer id) {
-        return null;
-    }
-
-    @Override
     public IPage<Seller> selectAll(int current, int size) {
         Page<Seller> page = new Page<Seller>(current, size);
         return this.page(page);
@@ -43,6 +36,13 @@ public class SellerServiceImpl extends ServiceImpl<SellerMapper, Seller> impleme
 
     @Override
     public Seller changeStatus(Integer id, Integer disabledFlag) {
-        return null;
+        Seller sellerModel = this.getById(id);
+        sellerModel.setUpdatedAt(null);
+        if (sellerModel == null) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+        sellerModel.setDisabledFlag(disabledFlag);
+        this.updateById(sellerModel);
+        return sellerModel;
     }
 }

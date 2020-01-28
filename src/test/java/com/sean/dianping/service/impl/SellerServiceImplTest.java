@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,11 +20,12 @@ public class SellerServiceImplTest {
     private SellerService sellerService;
 
     @Test
+    @Rollback(false)
     public void create() {
-    }
-
-    @Test
-    public void get() {
+        Seller seller = new Seller();
+        seller.setName("sean");
+        boolean result = sellerService.save(seller);
+        System.out.println(result);
     }
 
     @Test
@@ -34,6 +36,11 @@ public class SellerServiceImplTest {
     }
 
     @Test
+    @Rollback(false)
     public void changeStatus() {
+        Seller result = sellerService.changeStatus(29, 2);
+        System.out.println(result);
     }
+
+
 }
