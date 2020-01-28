@@ -1,5 +1,6 @@
 package com.sean.dianping.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.sean.dianping.bean.Seller;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -19,7 +20,7 @@ public interface SellerService extends IService<Seller> {
 
     Seller get(Integer id);
 
-    List<Seller> selectAll();
+    IPage<Seller> selectAll(int current, int size);
 
     Seller changeStatus(Integer id, Integer disabledFlag);
 
