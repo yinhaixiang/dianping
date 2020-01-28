@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-@Controller("/admin/admin")
+@Controller
 @RequestMapping("/admin/admin")
 public class AdminController {
 

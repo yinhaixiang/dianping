@@ -1,5 +1,6 @@
 package com.sean.dianping.controller.admin;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.sean.dianping.bean.Seller;
 import com.sean.dianping.common.*;
 import com.sean.dianping.request.PageQuery;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 /**
  * @author yinhaixiang
  */
-@Controller("/admin/seller")
+@Controller
 @RequestMapping("/admin/seller")
 public class SellerController {
 
@@ -35,8 +36,15 @@ public class SellerController {
     @RequestMapping("/index")
     @AdminPermission
     public ModelAndView index(PageQuery pageQuery) {
+        int current = pageQuery.getPage();
+        int size = pageQuery.getSize();
+        IPage<Seller> sellerModelPageInfo = sellerService.selectAll(current, size);
 
-        return null;
+        ModelAndView modelAndView = new ModelAndView("/admin/seller/index.html");
+        modelAndView.addObject("data", sellerModelPageInfo);
+        modelAndView.addObject("CONTROLLER_NAME", "seller");
+        modelAndView.addObject("ACTION_NAME", "index");
+        return modelAndView;
     }
 
     @RequestMapping("/createpage")
