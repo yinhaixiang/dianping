@@ -16,6 +16,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 
 /**
  * 代码生成器
@@ -38,12 +39,12 @@ public class MybatisPlusGenerator {
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
         gc.setAuthor(rb.getString("author"));
+        gc.setEntityName("%sModel");
         gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setControllerName("%sController");
-        gc.setEntityName("%sModel");
         mpg.setGlobalConfig(gc);
 
         // dataSource配置
@@ -74,6 +75,22 @@ public class MybatisPlusGenerator {
             }
         };
 
+        // 如果模板引擎是 freemarker
+        String templatePath = "/templates/mapper.xml.vm";
+
+        // 自定义输出配置
+        List<FileOutConfig> focList = new ArrayList<>();
+
+        // 自定义配置会被优先输出
+        focList.add(new FileOutConfig(templatePath) {
+            @Override
+            public String outputFile(com.baomidou.mybatisplus.generator.config.po.TableInfo tableInfo) {
+                // 自定义输入文件名称
+                return rb.getString("OutputDirXml") + "/mapper/" + tableInfo.getEntityName() + StringPool.DOT_XML;
+            }
+        });
+
+        cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
         mpg.setTemplate(new TemplateConfig().setXml(null));
 
@@ -86,6 +103,7 @@ public class MybatisPlusGenerator {
         strategy.setInclude(new String[]{rb.getString("tableName")});
 
         mpg.setStrategy(strategy);
+        mpg.setTemplateEngine(new VelocityTemplateEngine());
         mpg.execute();
 
         System.out.println("done,fresh engineering");
