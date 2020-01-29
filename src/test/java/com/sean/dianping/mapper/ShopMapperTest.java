@@ -30,9 +30,9 @@ public class ShopMapperTest {
         System.out.println(result);
     }
 
-//    @Test
-//    public void searchGroupByTags() {
-//        List<Map<String, Object>> result = shopMapper.searchGroupByTags("西", null, "帅哥多");
-//        System.out.println(result);
-//    }
+    @Test
+    public void searchGroupByTags() {
+        List<Map<String, Object>> result = shopMapper.searchGroupByTags("西", null, "帅哥多");
+        System.out.println(result);
+    }
 }
