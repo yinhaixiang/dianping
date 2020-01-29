@@ -1,7 +1,8 @@
 package com.sean.dianping.service;
 
-import com.sean.dianping.bean.Shop;
+import com.sean.dianping.bean.ShopModel;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sean.dianping.bean.ShopModel;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author yinhaixiang
  * @since 2020-01-28
  */
-public interface ShopService extends IService<Shop> {
+public interface ShopService extends IService<ShopModel> {
 
 }

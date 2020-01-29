@@ -1,6 +1,6 @@
 package com.sean.dianping.service.impl;
 
-import com.sean.dianping.bean.User;
+import com.sean.dianping.bean.UserModel;
 import com.sean.dianping.common.BusinessException;
 import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.UserMapper;
@@ -25,29 +25,25 @@ import java.util.Date;
  * @since 2020-01-26
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public User register(User registerUser) {
+    public UserModel register(UserModel registerUser) {
         registerUser.setPassword(encodeByMd5(registerUser.getPassword()));
         this.save(registerUser);
         return this.getById(registerUser.getId());
     }
 
     @Override
-    public User login(String telphone, String password) {
-        User userModel = this.lambdaQuery().eq(User::getTelphone, telphone).eq(User::getPassword, encodeByMd5(password)).one();
+    public UserModel login(String telphone, String password) {
+        UserModel userModel = this.lambdaQuery().eq(UserModel::getTelphone, telphone).eq(UserModel::getPassword, encodeByMd5(password)).one();
         if (userModel == null) {
             throw new BusinessException(EmBusinessError.LOGIN_FAIL);
         }
         return userModel;
     }
 
-    @Override
-    public Integer countAllUser() {
-        return this.count();
-    }
 
     private String encodeByMd5(String str) {
         try {

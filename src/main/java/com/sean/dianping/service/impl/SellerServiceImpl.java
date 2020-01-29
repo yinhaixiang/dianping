@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.sean.dianping.bean.Seller;
+import com.sean.dianping.bean.SellerModel;
 import com.sean.dianping.common.BusinessException;
 import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.SellerMapper;
@@ -25,7 +25,7 @@ import java.util.List;
  * @since 2020-01-28
  */
 @Service
-public class SellerServiceImpl extends ServiceImpl<SellerMapper, Seller> implements SellerService {
+public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> implements SellerService {
 
     @Override
     public IPage<Seller> selectAll(int current, int size) {

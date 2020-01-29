@@ -1,8 +1,9 @@
 package com.sean.dianping.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.sean.dianping.bean.Seller;
+import com.sean.dianping.bean.SellerModel;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sean.dianping.bean.SellerModel;
 
 import java.util.List;
 
@@ -14,11 +15,11 @@ import java.util.List;
  * @author yinhaixiang
  * @since 2020-01-28
  */
-public interface SellerService extends IService<Seller> {
+public interface SellerService extends IService<SellerModel> {
 
-    IPage<Seller> selectAll(int current, int size);
+    IPage<SellerModel> selectAll(int current, int size);
 
-    Seller changeStatus(Integer id, Integer disabledFlag);
+    SellerModel changeStatus(Integer id, Integer disabledFlag);
 
 
 }

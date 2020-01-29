@@ -1,7 +1,7 @@
 package com.sean.dianping.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.sean.dianping.bean.User;
+import com.sean.dianping.bean.UserModel;
 import com.sean.dianping.common.BusinessException;
 
 /**
@@ -12,7 +12,7 @@ import com.sean.dianping.common.BusinessException;
  * @author sean
  * @since 2020-01-26
  */
-public interface UserService extends IService<User> {
+public interface UserService extends IService<UserModel> {
 
     /**
      * 注册用户
@@ -20,7 +20,7 @@ public interface UserService extends IService<User> {
      * @param registerUser
      * @return
      */
-    User register(User registerUser);
+    UserModel register(UserModel registerUser);
 
 
     /**
@@ -30,12 +30,6 @@ public interface UserService extends IService<User> {
      * @param password
      * @return
      */
-    User login(String telphone, String password);
+    UserModel login(String telphone, String password);
 
-    /**
-     * 统计用户
-     *
-     * @return
-     */
-    Integer countAllUser();
 }

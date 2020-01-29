@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 /**
  * 代码生成器
+ *
  * @author yinhaixiang
  */
 public class MybatisPlusGenerator {
@@ -42,6 +43,7 @@ public class MybatisPlusGenerator {
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setControllerName("%sController");
+        gc.setEntityName("%sModel");
         mpg.setGlobalConfig(gc);
 
         // dataSource配置
