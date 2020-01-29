@@ -1,20 +1,14 @@
 package com.sean.dianping.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sean.dianping.bean.SellerModel;
 import com.sean.dianping.common.BusinessException;
 import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.SellerMapper;
 import com.sean.dianping.service.SellerService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * <p>
@@ -28,15 +22,15 @@ import java.util.List;
 public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> implements SellerService {
 
     @Override
-    public IPage<Seller> selectAll(int current, int size) {
-        Page<Seller> page = new Page<Seller>(current, size);
+    public IPage<SellerModel> selectAll(int current, int size) {
+        Page<SellerModel> page = new Page<SellerModel>(current, size);
         return this.page(page);
 
     }
 
     @Override
-    public Seller changeStatus(Integer id, Integer disabledFlag) {
-        Seller sellerModel = this.getById(id);
+    public SellerModel changeStatus(Integer id, Integer disabledFlag) {
+        SellerModel sellerModel = this.getById(id);
         sellerModel.setUpdatedAt(null);
         if (sellerModel == null) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);

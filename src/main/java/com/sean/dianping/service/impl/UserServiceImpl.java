@@ -6,23 +6,19 @@ import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.UserMapper;
 import com.sean.dianping.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sun.misc.BASE64Encoder;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 
 /**
  * <p>
- * 服务实现类
+ *  服务实现类
  * </p>
  *
- * @author sean
- * @since 2020-01-26
+ * @author yinhaixiang
+ * @since 2020-01-29
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implements UserService {

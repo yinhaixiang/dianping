@@ -1,6 +1,6 @@
 package com.sean.dianping.mapper;
 
-import com.sean.dianping.bean.Seller;
+import com.sean.dianping.bean.SellerModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author yinhaixiang
  * @since 2020-01-28
  */
-public interface SellerMapper extends BaseMapper<Seller> {
+public interface SellerMapper extends BaseMapper<SellerModel> {
 
 }

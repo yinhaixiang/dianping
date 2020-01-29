@@ -1,7 +1,7 @@
 package com.sean.dianping.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.sean.dianping.bean.Seller;
+import com.sean.dianping.bean.SellerModel;
 import com.sean.dianping.service.SellerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ public class SellerServiceImplTest {
     @Test
     @Rollback(false)
     public void create() {
-        Seller seller = new Seller();
+        SellerModel seller = new SellerModel();
         seller.setName("sean");
         boolean result = sellerService.save(seller);
         System.out.println(result);
@@ -30,7 +30,7 @@ public class SellerServiceImplTest {
 
     @Test
     public void selectAll() {
-        IPage<Seller> result = sellerService.selectAll(2, 5);
+        IPage<SellerModel> result = sellerService.selectAll(2, 5);
         System.out.println(result);
 
     }
@@ -38,7 +38,7 @@ public class SellerServiceImplTest {
     @Test
     @Rollback(false)
     public void changeStatus() {
-        Seller result = sellerService.changeStatus(29, 2);
+        SellerModel result = sellerService.changeStatus(29, 2);
         System.out.println(result);
     }
 

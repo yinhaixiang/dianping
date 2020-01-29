@@ -19,6 +19,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * @author yinhaixiang
+ */
 @Controller
 @RequestMapping("/admin/admin")
 public class AdminController {
@@ -44,7 +47,7 @@ public class AdminController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
 
-        modelAndView.addObject("userCount", userService.countAllUser());
+        modelAndView.addObject("userCount", userService.count());
         modelAndView.addObject("CONTROLLER_NAME", "admin");
         modelAndView.addObject("ACTION_NAME", "index");
         return modelAndView;

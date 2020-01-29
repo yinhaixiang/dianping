@@ -1,7 +1,7 @@
 package com.sean.dianping.controller.admin;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.sean.dianping.bean.Seller;
+import com.sean.dianping.bean.SellerModel;
 import com.sean.dianping.common.*;
 import com.sean.dianping.request.PageQuery;
 import com.sean.dianping.request.SellerCreateReq;
@@ -40,7 +40,7 @@ public class SellerController {
     public ModelAndView index(PageQuery pageQuery) {
         int current = pageQuery.getPage();
         int size = pageQuery.getSize();
-        IPage<Seller> sellerModelPageInfo = sellerService.selectAll(current, size);
+        IPage<SellerModel> sellerModelPageInfo = sellerService.selectAll(current, size);
 
         // 转成前端需要的数据格式
         Map result = new HashMap();
@@ -73,7 +73,7 @@ public class SellerController {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
         }
 
-        Seller sellerModel = new Seller();
+        SellerModel sellerModel = new SellerModel();
         sellerModel.setName(sellerCreateReq.getName());
         sellerService.save(sellerModel);
 
@@ -87,7 +87,7 @@ public class SellerController {
     @AdminPermission
     @ResponseBody
     public CommonRes down(@RequestParam(value = "id") Integer id) throws BusinessException {
-        Seller sellerModel = sellerService.changeStatus(id, 1);
+        SellerModel sellerModel = sellerService.changeStatus(id, 1);
         return CommonRes.create(sellerModel);
     }
 
@@ -95,7 +95,7 @@ public class SellerController {
     @AdminPermission
     @ResponseBody
     public CommonRes up(@RequestParam(value = "id") Integer id) throws BusinessException {
-        Seller sellerModel = sellerService.changeStatus(id, 0);
+        SellerModel sellerModel = sellerService.changeStatus(id, 0);
         return CommonRes.create(sellerModel);
     }
 

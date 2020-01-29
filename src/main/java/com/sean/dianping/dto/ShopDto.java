@@ -1,11 +1,11 @@
 package com.sean.dianping.dto;
 
-import com.sean.dianping.bean.Category;
-import com.sean.dianping.bean.Seller;
-import com.sean.dianping.bean.Shop;
+import com.sean.dianping.bean.CategoryModel;
+import com.sean.dianping.bean.SellerModel;
+import com.sean.dianping.bean.ShopModel;
 
-public class ShopDto extends Shop {
-    private Seller sellerModel;
+public class ShopDto extends ShopModel {
+    private SellerModel sellerModel;
 
-    private Category categoryModel;
+    private CategoryModel categoryModel;
 }

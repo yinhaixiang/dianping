@@ -1,7 +1,7 @@
 package com.sean.dianping.mapper;
 
-import com.sean.dianping.bean.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sean.dianping.bean.CategoryModel;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author yinhaixiang
  * @since 2020-01-28
  */
-public interface CategoryMapper extends BaseMapper<Category> {
+public interface CategoryMapper extends BaseMapper<CategoryModel> {
 
 }

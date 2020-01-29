@@ -1,6 +1,6 @@
 package com.sean.dianping.controller;
 
-import com.sean.dianping.bean.User;
+import com.sean.dianping.bean.UserModel;
 import com.sean.dianping.common.BusinessException;
 import com.sean.dianping.common.CommonRes;
 import com.sean.dianping.common.CommonUtil;
@@ -20,9 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * <p>
@@ -53,7 +50,7 @@ public class UserController {
     @RequestMapping("/get")
     @ResponseBody
     public CommonRes getUser(@RequestParam(name = "id") Integer id) throws BusinessException {
-        User userModel = userService.getById(id);
+        UserModel userModel = userService.getById(id);
         if (userModel == null) {
             throw new BusinessException(EmBusinessError.NO_OBJECT_FOUND);
         } else {
@@ -71,19 +68,19 @@ public class UserController {
 
     @RequestMapping("/register")
     @ResponseBody
-    public CommonRes register(@Valid @RequestBody RegisterReq registerReq, BindingResult bindingResult) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+    public CommonRes register(@Valid @RequestBody RegisterReq registerReq, BindingResult bindingResult) {
         try {
             if (bindingResult.hasErrors()) {
                 throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
             }
 
-            User registerUser = new User();
+            UserModel registerUser = new UserModel();
             registerUser.setTelphone(registerReq.getTelphone());
             registerUser.setPassword(registerReq.getPassword());
             registerUser.setNickName(registerReq.getNickName());
             registerUser.setGender(registerReq.getGender());
 
-            User resUserModel = userService.register(registerUser);
+            UserModel resUserModel = userService.register(registerUser);
             return CommonRes.create(resUserModel);
         } catch (DuplicateKeyException e) {
             throw new BusinessException(EmBusinessError.REGISTER_DUP_FAIL);
@@ -92,17 +89,16 @@ public class UserController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public CommonRes login(@RequestBody @Valid LoginReq loginReq, BindingResult bindingResult) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+    public CommonRes login(@RequestBody @Valid LoginReq loginReq, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, CommonUtil.processErrorString(bindingResult));
         }
-        User userModel = userService.login(loginReq.getTelphone(), loginReq.getPassword());
+        UserModel userModel = userService.login(loginReq.getTelphone(), loginReq.getPassword());
         httpServletRequest.getSession().setAttribute(CURRENT_USER_SESSION, userModel);
 
         return CommonRes.create(userModel);
     }
 
-    //
     @RequestMapping("/logout")
     @ResponseBody
     public CommonRes logout() {
@@ -113,7 +109,7 @@ public class UserController {
     @RequestMapping("/getcurrentuser")
     @ResponseBody
     public CommonRes getCurrentUser() {
-        User userModel = (User) httpServletRequest.getSession().getAttribute(CURRENT_USER_SESSION);
+        UserModel userModel = (UserModel) httpServletRequest.getSession().getAttribute(CURRENT_USER_SESSION);
         return CommonRes.create(userModel);
     }
 

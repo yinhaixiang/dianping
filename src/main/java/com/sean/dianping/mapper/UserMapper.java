@@ -1,7 +1,7 @@
 package com.sean.dianping.mapper;
 
-import com.sean.dianping.bean.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sean.dianping.bean.UserModel;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author sean
  * @since 2020-01-26
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<UserModel> {
 
 }

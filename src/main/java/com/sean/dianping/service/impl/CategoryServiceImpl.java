@@ -1,6 +1,5 @@
 package com.sean.dianping.service.impl;
 
-import com.sean.dianping.bean.Category;
 import com.sean.dianping.bean.CategoryModel;
 import com.sean.dianping.mapper.CategoryMapper;
 import com.sean.dianping.service.CategoryService;

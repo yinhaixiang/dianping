@@ -1,16 +1,15 @@
 package com.sean.dianping.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.sean.dianping.bean.UserModel;
-import com.sean.dianping.common.BusinessException;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 服务类
+ *  服务类
  * </p>
  *
- * @author sean
- * @since 2020-01-26
+ * @author yinhaixiang
+ * @since 2020-01-29
  */
 public interface UserService extends IService<UserModel> {
 
@@ -31,5 +30,6 @@ public interface UserService extends IService<UserModel> {
      * @return
      */
     UserModel login(String telphone, String password);
+
 
 }
