@@ -24,7 +24,7 @@ import java.util.Map;
 /**
  * @author yinhaixiang
  */
-@Controller
+@Controller("/admin/category")
 @RequestMapping("/admin/category")
 public class CategoryController {
     @Autowired

@@ -87,6 +87,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
             ShopDto shopDto = ShopDto.fromModel(shopModel);
             shopDto.setSellerModel(sellerService.getById(shopModel.getSellerId()));
             shopDto.setCategoryModel(categoryService.getById(shopModel.getCategoryId()));
+            shopDtoList.add(shopDto);
         });
 
         Page<ShopDto> result = new Page<>();
@@ -108,6 +109,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
             ShopDto shopDto = ShopDto.fromModel(shopModel);
             shopDto.setSellerModel(sellerService.getById(shopModel.getSellerId()));
             shopDto.setCategoryModel(categoryService.getById(shopModel.getCategoryId()));
+            shopDtoList.add(shopDto);
         });
         return shopDtoList;
     }
@@ -126,6 +128,7 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
             ShopDto shopDto = ShopDto.fromModel(shopModel);
             shopDto.setSellerModel(sellerService.getById(shopModel.getSellerId()));
             shopDto.setCategoryModel(categoryService.getById(shopModel.getCategoryId()));
+            shopDtoList.add(shopDto);
         });
         return shopDtoList;
     }
