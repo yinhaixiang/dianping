@@ -25,7 +25,6 @@ public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> im
     public IPage<SellerModel> selectAll(int current, int size) {
         Page<SellerModel> page = new Page<SellerModel>(current, size);
         return this.page(page);
-
     }
 
     @Override

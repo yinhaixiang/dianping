@@ -1,5 +1,6 @@
 package com.sean.dianping.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sean.dianping.bean.ShopModel;
 import com.sean.dianping.dto.ShopDto;
@@ -22,7 +23,7 @@ public interface ShopService extends IService<ShopModel> {
 
     ShopDto get(Integer id);
 
-    List<ShopDto> selectAll();
+    IPage<ShopDto> selectAll(int current, int size);
 
     List<ShopDto> recommend(BigDecimal longitude, BigDecimal latitude);
 

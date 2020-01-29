@@ -1,5 +1,7 @@
 package com.sean.dianping.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sean.dianping.bean.CategoryModel;
 import com.sean.dianping.bean.SellerModel;
 import com.sean.dianping.bean.ShopModel;
@@ -74,8 +76,11 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
     }
 
     @Override
-    public List<ShopDto> selectAll() {
-        List<ShopModel> shopModelList = this.list();
+    public IPage<ShopDto> selectAll(int current, int size) {
+        Page<ShopModel> page = new Page<ShopModel>(current, size);
+        Page<ShopModel> pageResult = this.page(page);
+
+        List<ShopModel> shopModelList = pageResult.getRecords();
         List<ShopDto> shopDtoList = new ArrayList<>();
 
         shopModelList.forEach(shopModel -> {
@@ -83,7 +88,15 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
             shopDto.setSellerModel(sellerService.getById(shopModel.getSellerId()));
             shopDto.setCategoryModel(categoryService.getById(shopModel.getCategoryId()));
         });
-        return shopDtoList;
+
+        Page<ShopDto> result = new Page<>();
+        result.setRecords(shopDtoList);
+        result.setTotal(pageResult.getTotal());
+        result.setSize(pageResult.getSize());
+        result.setCurrent(current);
+        result.setPages(pageResult.getPages());
+
+        return result;
     }
 
     @Override
@@ -101,12 +114,12 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, ShopModel> implemen
 
     @Override
     public List<Map<String, Object>> searchGroupByTags(String keyword, Integer categoryId, String tags) {
-        return shopMapper.searchGroupByTags(keyword,categoryId,tags);
+        return shopMapper.searchGroupByTags(keyword, categoryId, tags);
     }
 
     @Override
     public List<ShopDto> search(BigDecimal longitude, BigDecimal latitude, String keyword, Integer orderby, Integer categoryId, String tags) {
-        List<ShopModel> shopModelList = shopMapper.search(longitude,latitude,keyword,orderby,categoryId,tags);
+        List<ShopModel> shopModelList = shopMapper.search(longitude, latitude, keyword, orderby, categoryId, tags);
         List<ShopDto> shopDtoList = new ArrayList<>();
 
         shopModelList.forEach(shopModel -> {
