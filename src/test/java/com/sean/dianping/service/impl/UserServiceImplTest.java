@@ -61,12 +61,11 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void getUserById() {
-
+    public void mockitoGetUserById() {
         UserModel userModel = new UserModel();
         userModel.setId(1).setNickName("sean");
         when(userMapper.selectById(12)).thenReturn(userModel);
-        UserModel result = userService.getUserById(13);
+        UserModel result = userService.mockitoGetUserById(12);
         System.out.println(result);
     }
 }

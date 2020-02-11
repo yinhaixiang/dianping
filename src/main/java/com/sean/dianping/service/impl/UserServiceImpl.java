@@ -46,7 +46,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
     }
 
     @Override
-    public UserModel getUserById(Integer id) {
+    public UserModel mockitoGetUserById(Integer id) {
         return userMapper.selectById(id);
     }
 
