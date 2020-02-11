@@ -32,4 +32,6 @@ public interface UserService extends IService<UserModel> {
     UserModel login(String telphone, String password);
 
 
+    UserModel getUserById(Integer id);
+
 }

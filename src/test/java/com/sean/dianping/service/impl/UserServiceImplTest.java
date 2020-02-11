@@ -1,14 +1,18 @@
 package com.sean.dianping.service.impl;
 
 import com.sean.dianping.bean.UserModel;
+import com.sean.dianping.mapper.UserMapper;
 import com.sean.dianping.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 
 @Transactional
 @RunWith(SpringRunner.class)
@@ -18,6 +22,10 @@ public class UserServiceImplTest {
 
     @Autowired
     private UserService userService;
+
+
+    @MockBean
+    private UserMapper userMapper;
 
 
     @Test
@@ -40,9 +48,9 @@ public class UserServiceImplTest {
 
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     public void update() {
-        UserModel userModel = userService.getById(4);
+        UserModel userModel = userService.getById(12);
         userModel.setTelphone("132");
         userModel.setUpdatedAt(null);
 
@@ -50,5 +58,15 @@ public class UserServiceImplTest {
         System.out.println(result);
 
 
+    }
+
+    @Test
+    public void getUserById() {
+
+        UserModel userModel = new UserModel();
+        userModel.setId(1).setNickName("sean");
+        when(userMapper.selectById(12)).thenReturn(userModel);
+        UserModel result = userService.getUserById(13);
+        System.out.println(result);
     }
 }

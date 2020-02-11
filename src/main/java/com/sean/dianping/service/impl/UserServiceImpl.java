@@ -6,15 +6,17 @@ import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.UserMapper;
 import com.sean.dianping.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sun.misc.BASE64Encoder;
 
+import javax.annotation.Resource;
 import java.security.MessageDigest;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author yinhaixiang
@@ -22,6 +24,9 @@ import java.security.MessageDigest;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implements UserService {
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -38,6 +43,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
             throw new BusinessException(EmBusinessError.LOGIN_FAIL);
         }
         return userModel;
+    }
+
+    @Override
+    public UserModel getUserById(Integer id) {
+        return userMapper.selectById(id);
     }
 
 
