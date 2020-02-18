@@ -54,12 +54,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
         return userMapper.selectById(id);
     }
 
-    @Override
-    public void tryMybatisPlus() {
-
-    }
-
-
     private String encodeByMd5(String str) {
         try {
             //确认计算方法MD5
@@ -69,5 +63,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
         } catch (Exception e) {
             throw new BusinessException(EmBusinessError.MD5_ERROR);
         }
+    }
+
+
+    @Override
+    public void tryMybatisPlus() {
+
     }
 }
