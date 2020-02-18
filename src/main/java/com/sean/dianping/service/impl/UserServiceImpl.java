@@ -1,5 +1,7 @@
 package com.sean.dianping.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.sean.dianping.bean.UserModel;
 import com.sean.dianping.common.BusinessException;
 import com.sean.dianping.common.EmBusinessError;
@@ -13,6 +15,8 @@ import sun.misc.BASE64Encoder;
 
 import javax.annotation.Resource;
 import java.security.MessageDigest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -48,6 +52,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
     @Override
     public UserModel mockitoGetUserById(Integer id) {
         return userMapper.selectById(id);
+    }
+
+    @Override
+    public void tryMybatisPlus() {
+
     }
 
 

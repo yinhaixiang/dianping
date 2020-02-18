@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author yinhaixiang
@@ -34,4 +34,5 @@ public interface UserService extends IService<UserModel> {
 
     UserModel mockitoGetUserById(Integer id);
 
+    void tryMybatisPlus();
 }

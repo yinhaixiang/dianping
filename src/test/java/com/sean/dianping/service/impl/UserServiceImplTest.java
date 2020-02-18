@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
@@ -67,5 +68,10 @@ public class UserServiceImplTest {
         when(userMapper.selectById(12)).thenReturn(userModel);
         UserModel result = userService.mockitoGetUserById(12);
         System.out.println(result);
+    }
+
+    @Test
+    public void tryMybatisPlus() {
+        userService.tryMybatisPlus();
     }
 }
