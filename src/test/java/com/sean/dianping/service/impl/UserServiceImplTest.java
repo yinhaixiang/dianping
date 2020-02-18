@@ -42,7 +42,7 @@ public class UserServiceImplTest {
         userModel.setGender(1);
         userModel.setNickName("sean");
         userModel.setPassword("sean");
-        userModel.setTelphone("136");
+        userModel.setTelphone("1");
         boolean result = userService.save(userModel);
         System.out.println(result);
     }
@@ -70,8 +70,5 @@ public class UserServiceImplTest {
         System.out.println(result);
     }
 
-    @Test
-    public void tryMybatisPlus() {
-        userService.tryMybatisPlus();
-    }
+
 }

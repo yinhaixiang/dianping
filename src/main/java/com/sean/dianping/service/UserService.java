@@ -34,5 +34,4 @@ public interface UserService extends IService<UserModel> {
 
     UserModel mockitoGetUserById(Integer id);
 
-    void tryMybatisPlus();
 }

@@ -23,7 +23,7 @@ public class SellerServiceImplTest {
     @Rollback(false)
     public void create() {
         SellerModel seller = new SellerModel();
-        seller.setName("sean");
+        seller.setName("sean3");
         boolean result = sellerService.save(seller);
         System.out.println(result);
     }
@@ -36,11 +36,16 @@ public class SellerServiceImplTest {
     }
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     public void changeStatus() {
         SellerModel result = sellerService.changeStatus(29, 2);
         System.out.println(result);
     }
 
 
+    @Test
+    public void tryMybatisPlus() {
+        Object result = sellerService.tryMybatisPlus();
+        System.out.println(result);
+    }
 }

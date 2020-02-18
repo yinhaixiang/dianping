@@ -38,4 +38,10 @@ public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> im
         this.updateById(sellerModel);
         return sellerModel;
     }
+
+    @Override
+    public Object tryMybatisPlus() {
+        int result = this.count();
+        return result;
+    }
 }

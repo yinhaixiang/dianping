@@ -66,8 +66,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
     }
 
 
-    @Override
-    public void tryMybatisPlus() {
 
-    }
 }

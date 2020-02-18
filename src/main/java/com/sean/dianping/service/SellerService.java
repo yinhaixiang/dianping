@@ -21,5 +21,5 @@ public interface SellerService extends IService<SellerModel> {
 
     SellerModel changeStatus(Integer id, Integer disabledFlag);
 
-
+    Object tryMybatisPlus();
 }
