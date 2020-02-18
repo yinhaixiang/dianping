@@ -1,6 +1,7 @@
 package com.sean.dianping.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sean.dianping.bean.SellerModel;
@@ -9,6 +10,8 @@ import com.sean.dianping.common.EmBusinessError;
 import com.sean.dianping.mapper.SellerMapper;
 import com.sean.dianping.service.SellerService;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -20,6 +23,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> implements SellerService {
+
+    @Resource
+    private SellerMapper sellerMapper;
 
     @Override
     public IPage<SellerModel> selectAll(int current, int size) {
@@ -41,7 +47,8 @@ public class SellerServiceImpl extends ServiceImpl<SellerMapper, SellerModel> im
 
     @Override
     public Object tryMybatisPlus() {
-        int result = this.count();
+        QueryChainWrapper<SellerModel> wrapper = this.query().select("select sum(1) as total from seller");
+        Object result = this.sellerMapper.selectMaps(wrapper);
         return result;
     }
 }
