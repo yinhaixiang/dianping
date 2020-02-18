@@ -1,5 +1,7 @@
 package com.sean.dianping.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sean.dianping.bean.CategoryModel;
 import com.sean.dianping.bean.UserModel;
 import com.sean.dianping.mapper.UserMapper;
 import com.sean.dianping.service.UserService;
@@ -25,8 +27,8 @@ public class UserServiceImplTest {
     private UserService userService;
 
 
-    @MockBean
-    private UserMapper userMapper;
+//    @MockBean
+//    private UserMapper userMapper;
 
 
     @Test
@@ -61,14 +63,19 @@ public class UserServiceImplTest {
 
     }
 
+//    @Test
+//    public void mockitoGetUserById() {
+//        UserModel userModel = new UserModel();
+//        userModel.setId(1).setNickName("sean");
+//        when(userMapper.selectById(12)).thenReturn(userModel);
+//        UserModel result = userService.mockitoGetUserById(12);
+//        System.out.println(result);
+//    }
+
+
     @Test
-    public void mockitoGetUserById() {
-        UserModel userModel = new UserModel();
-        userModel.setId(1).setNickName("sean");
-        when(userMapper.selectById(12)).thenReturn(userModel);
-        UserModel result = userService.mockitoGetUserById(12);
+    public void selectAll() {
+        IPage<UserModel> result = userService.selectAll(1, 5);
         System.out.println(result);
     }
-
-
 }

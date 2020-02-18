@@ -1,7 +1,8 @@
 package com.sean.dianping.service;
 
-import com.sean.dianping.bean.UserModel;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sean.dianping.bean.UserModel;
 
 /**
  * <p>
@@ -33,5 +34,8 @@ public interface UserService extends IService<UserModel> {
 
 
     UserModel mockitoGetUserById(Integer id);
+
+
+    IPage<UserModel> selectAll(int current, int size);
 
 }
