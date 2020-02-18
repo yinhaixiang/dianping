@@ -1,7 +1,7 @@
 package com.sean.dianping.mapper;
 
 import com.sean.dianping.bean.ShopModel;
-import com.sean.dianping.service.SellerService;
+import com.sean.dianping.bean.UserModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,26 +14,27 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
-
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ShopMapperTest {
+public class UserMapperTest {
 
     @Resource
-    private ShopMapper shopMapper;
-
+    private UserMapper userMapper;
 
     @Test
-    public void recommend() {
-        List<ShopModel> result = shopMapper.recommend(new BigDecimal(2), new BigDecimal(3));
+    public void insert() {
+        UserModel userModel = new UserModel();
+        userModel.setNickName("sean").setPassword("123").setTelphone("134");
+        int result = userMapper.insert(userModel);
         System.out.println(result);
     }
 
     @Test
-    public void searchGroupByTags() {
-        List<Map<String, Object>> result = shopMapper.searchGroupByTags("西", null, "帅哥多");
+    public void SelectById() {
+        UserModel result = userMapper.selectById(1);
         System.out.println(result);
     }
+
+
 }
