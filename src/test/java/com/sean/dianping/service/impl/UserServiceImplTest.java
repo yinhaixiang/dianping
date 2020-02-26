@@ -27,8 +27,8 @@ public class UserServiceImplTest {
     private UserService userService;
 
 
-//    @MockBean
-//    private UserMapper userMapper;
+    @MockBean
+    private UserMapper userMapper;
 
 
     @Test
@@ -63,14 +63,23 @@ public class UserServiceImplTest {
 
     }
 
-//    @Test
-//    public void mockitoGetUserById() {
-//        UserModel userModel = new UserModel();
-//        userModel.setId(1).setNickName("sean");
-//        when(userMapper.selectById(12)).thenReturn(userModel);
-//        UserModel result = userService.mockitoGetUserById(12);
-//        System.out.println(result);
-//    }
+    @Test
+    public void mockitoGetUserById() {
+        UserModel userModel12 = new UserModel();
+        userModel12.setId(1).setNickName("yinhaixiang");
+
+
+        UserModel userModel100 = new UserModel();
+        userModel100.setId(2).setNickName("hongkai");
+
+
+
+        when(userMapper.selectById(12)).thenReturn(userModel12);
+        when(userMapper.selectById(100)).thenReturn(userModel100);
+
+        UserModel result = userService.mockitoGetUserById(100);
+        System.out.println(result);
+    }
 
 
     @Test

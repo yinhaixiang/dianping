@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,10 @@ public class UserMapperTest {
         System.out.println(result);
     }
 
+    @Test
+    public void selectBatchIds() {
+        List<UserModel> result = userMapper.selectBatchIds(Arrays.asList(1, 2));
+        System.out.println(result);
+    }
 
 }
